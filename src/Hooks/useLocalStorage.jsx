@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const useLocalStorage = () => {
+  const [parsedValues, setParsedValues] = useState([]);
   useEffect(() => {
     const values = localStorage.getItem("Room");
-    const parsedValues = JSON.parse(values);
+    setParsedValues(JSON.parse(values));
     //console.log(parsedValues);
-    return parsedValues || "";
   }, []);
+  return parsedValues;
 };
